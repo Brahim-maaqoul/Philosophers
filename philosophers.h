@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:19:43 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/21 20:34:34 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/05/24 21:10:01 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <pthread.h>
-# include <time.h>
+# include <sys/time.h>
 
 typedef struct s_philo
 {
@@ -27,9 +27,15 @@ typedef struct s_philo
     int time_eat;
     int time_sleep;
     int num_eat;
+    int     id;
+    pthread_t   th;
+    pthread_mutex_t fork;
+    long long     created_at;
 }       t_philo;
 
 int		ft_atoi(const char	*str);
 void    ft_parsing(t_philo *philo, int ac, char **av);
+void	*ft_calloc(size_t num, size_t size);
+long long	    ft_current_time(long long i);
 
 #endif
