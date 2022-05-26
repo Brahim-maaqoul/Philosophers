@@ -6,13 +6,13 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:28:00 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/24 18:10:15 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:40:39 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*ft_routine(t_philo *ph)
+void	*ft_routine(void *philo)
 {
 	
 }
