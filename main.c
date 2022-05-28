@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 15:28:00 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/28 02:44:52 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/05/28 02:42:52 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2022/05/28 02:50:58 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*ft_routine(void *philo)
+int main(int ac, char **av)
 {
-	int	i;
-	t_infos *inf;
-	
-	i = 0;
-	inf = (t_infos *) philo;
-	inf->created_at = ft_current_time(inf);
-	while (i < inf->num_phil)
-	{
-		ft_grab_fork(inf, i);
-		ft_eating(inf, i);
-		ft_sleeping(inf, i);
-		ft_thinking(inf, i);
-		i++;
-	}
-	return (NULL);
+	t_infos	*info = NULL;
+
+	ft_parsing(info, ac, av);
+	ft_init(info);
 }

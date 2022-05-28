@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:23:35 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/25 15:16:09 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/05/28 01:35:18 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ long long ft_gettime(void)
 	return (milliseconds);
 }
 
-long long	ft_current_time(t_philo *ph)
+long long	ft_current_time(t_infos *inf)
 {
-	return (ft_gettime() - ph->created_at);
+	return (ft_gettime() - inf->created_at);
 }
 
 // int main(void)

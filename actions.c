@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:09:40 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/26 22:52:57 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/05/28 01:40:39 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void	ft_thinking(t_infos *inf, int i)
 {
-	printf("%lld  %d is thinking\n", inf->created_at, i);
+	mutex_print_str(inf, "is thinking", i);
 }
 
 void	ft_grab_fork(t_infos *inf, int i)
 {
 	pthread_mutex_lock(&inf->forks[i]);
-	printf("%lld  %d has taken a fork\n", inf->created_at, i);
+	mutex_print_str(inf, "has taken a fork", i);
 	inf->b = 1;
 }
 
 void	ft_eating(t_infos *inf, int i)
 {
-	t_philo	*th;
 	if (inf->b != 0)
 	{
 		if (i == inf->num_phil)
@@ -36,19 +35,25 @@ void	ft_eating(t_infos *inf, int i)
 	}
 	else
 	{
-		printf("%lld  %d is eating\n", inf->created_at, i);
+		inf->ph[i].last_meal = ft_current_time(inf);
+		mutex_print_str(inf, "is eating", i);
 		pthread_mutex_unlock(&inf->forks[i]);
 		pthread_mutex_unlock(&inf->forks[i]);
 	}
+	usleep(inf->time_eat * 1000);
 }
 
 void	ft_sleeping(t_infos *inf, int i)
 {
-	printf("%lld  %d is sleeping\n", inf->created_at, i);
+	mutex_print_str(inf, "is sleeping", i);
 	usleep(inf->time_sleep * 1000);
 }
 
 void	ft_dying(t_infos *inf, int i)
 {
-	printf("%lld  %d died\n", inf->created_at, i);
+	if (inf->ph[i].last_meal > inf->time_die)
+	{
+		mutex_print_str(inf, "died", i);
+		inf->ph[i].is_finished = 1;
+	}
 }

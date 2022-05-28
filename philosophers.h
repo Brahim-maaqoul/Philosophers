@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:19:43 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/27 00:15:23 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/05/28 01:53:56 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,24 @@ typedef struct  s_infos
 	pthread_mutex_t *forks;
 	pthread_mutex_t	output;
 	long long	created_at;
+	int	ate;
 	int     b;
 }       t_infos;
 
 int		ft_atoi(const char	*str);
-void    ft_parsing(t_infos *info, int ac, char **av);
+int    ft_parsing(t_infos *info, int ac, char **av);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t num, size_t size);
-long long	    ft_current_time(t_philo *ph);
+long long	    ft_current_time(t_infos *inf);
 long long ft_gettime(void);
-void	mutex_print_str(char *str, int i);
+void	mutex_print_str(t_infos *inf, char *str, int i);
 void	*ft_routine(void *philo);
 void	*ft_init(t_infos *info);
 void	*ft_init_philos(t_infos *info);
+void	ft_thinking(t_infos *inf, int i);
+void	ft_eating(t_infos *inf, int i);
+void	ft_sleeping(t_infos *inf, int i);
+void	ft_grab_fork(t_infos *inf, int i);
+void	ft_dying(t_infos *inf, int i);
 
 #endif
