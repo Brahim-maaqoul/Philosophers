@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:19:43 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/28 01:53:56 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/04 21:37:42 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_philo
 {
 	int     id;
 	int     is_finished;
-	int     last_meal;
+	long     last_meal;
 	pthread_t   th;
 }       t_philo;
 
@@ -51,7 +51,7 @@ long long	    ft_current_time(t_infos *inf);
 long long ft_gettime(void);
 void	mutex_print_str(t_infos *inf, char *str, int i);
 void	*ft_routine(void *philo);
-void	*ft_init(t_infos *info);
+void	ft_init(t_infos *info);
 void	*ft_init_philos(t_infos *info);
 void	ft_thinking(t_infos *inf, int i);
 void	ft_eating(t_infos *inf, int i);
