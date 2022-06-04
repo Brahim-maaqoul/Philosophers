@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:09:40 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/28 01:40:39 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/04 23:26:04 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,21 @@ void	ft_grab_fork(t_infos *inf, int i)
 
 void	ft_eating(t_infos *inf, int i)
 {
+	long	t;
+
+	t = ft_gettime();
 	if (inf->b != 0)
 	{
 		if (i == inf->num_phil)
 			i = 0;
-		ft_grab_fork(inf, i + 1);
+		// ft_grab_fork(inf, i);
+		mutex_print_str(inf, "has taken a fork", i);
 		inf->b = 0;
 	}
-	else
-	{
-		inf->ph[i].last_meal = ft_current_time(inf);
-		mutex_print_str(inf, "is eating", i);
-		pthread_mutex_unlock(&inf->forks[i]);
-		pthread_mutex_unlock(&inf->forks[i]);
-	}
+	inf->ph[i].last_meal = ft_current_time(inf, t);
+	mutex_print_str(inf, "is eating", i);
+	pthread_mutex_unlock(&inf->forks[i]);
+		// pthread_mutex_unlock(&inf->forks[i]);
 	usleep(inf->time_eat * 1000);
 }
 

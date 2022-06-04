@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:28:00 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/04 21:49:10 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/04 23:28:01 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 void	*ft_routine(void *philo)
 {
 	int	i;
+	long	t;
 	t_infos *inf;
 	
 	i = 0;
 	inf = (t_infos *) philo;
 	// inf->ph = ft_calloc(inf->num_phil, sizeof(t_infos*));
-	inf->created_at = ft_current_time(inf);
+	t = ft_gettime();
+	// usleep (200 * 1000);
+	inf->created_at = ft_current_time(inf, t);
 	while (i < inf->num_phil)
 	{
 		ft_grab_fork(inf, i);
