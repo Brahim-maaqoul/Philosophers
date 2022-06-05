@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:23:35 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/04 23:02:26 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/05 17:20:04 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ long long	ft_current_time(t_infos *inf, long i)
 // {
 // 	t_philo *ph;
 // 	struct timeval tv;
-// 	ph = malloc(sizeof(pthread_t));
-// 	ph->created_at = ft_gettime();
-// 	int l = 0;
-// 	while (l < 5)
-// 	{
-// 		long long i = ft_current_time(ph);
-// 		printf("%lld\n", i);
-// 		usleep(200 * 1000);
-// 		l++;
-// 	}
+// 	// ph = malloc(sizeof(pthread_t));
+// 	// ph->created_at = ft_gettime();
+// 	// int l = 0;
+// 	// while (l < 5)
+// 	// {
+// 	// 	long long i = ft_current_time(ph);
+// 	// 	printf("%lld\n", i);
+// 	// 	usleep(200 * 1000);
+// 	// 	l++;
+// 	// }
+// 	printf("%lld\n", ft_gettime());
 // }

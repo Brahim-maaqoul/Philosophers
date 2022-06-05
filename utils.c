@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:57:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/05/27 21:48:37 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/05 21:25:42 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void	mutex_print_str(t_infos *inf, char *str, int i)
 {
 	pthread_mutex_lock(&inf->output);
 	if (!inf->ph[i].is_finished || inf->ate == inf->num_eat)
-		printf("%lld\t%d %s\n", inf->created_at, inf->ph[i].id, str);
+		printf("%lld\t%d %s\n",ft_gettime() - inf->created_at, inf->ph[i].id, str);
 	pthread_mutex_unlock(&inf->output);
 }
