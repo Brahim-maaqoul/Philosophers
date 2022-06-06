@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:19:43 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/04 23:02:32 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:39:35 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct s_philo
 {
 	int     id;
-	int     is_finished;
 	long     last_meal;
 	pthread_t   th;
 }       t_philo;
@@ -36,6 +35,7 @@ typedef struct  s_infos
 	int 		time_eat;
 	int 		time_sleep;
 	int 		num_eat;
+	int     is_finished;
 	pthread_mutex_t *forks;
 	pthread_mutex_t	output;
 	long long	created_at;

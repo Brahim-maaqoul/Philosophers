@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:22:19 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/05 22:19:47 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:18:10 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	*ft_init_philos(t_infos *info)
 	if (!info->ph)
 		return (NULL);
 	i = 0;
+	// pthread_detach(info->ph[i].th);
+	info->is_finished = 0;
 	while (i < info->num_phil)
 	{
-		info->ph[i].is_finished = 0;
 		info->ph[i].last_meal = 0;
 		info->ph[i].id = i + 1;
 		if (pthread_create(&info->ph[i].th, NULL, &ft_routine, info) != 0)
