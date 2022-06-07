@@ -34,6 +34,23 @@ void	*ft_init_philos(t_infos *info)
 	return (NULL);
 }
 
+void	ft_check_death(t_infos *inf)
+{
+	int	i;
+
+	while (1)
+	{
+		i = 0;
+		while (i < inf->num_phil)
+		{
+			if (ft_dying(inf, i))
+				return ;
+			i++;
+		}
+		usleep(500);
+	}
+}
+
 int	ft_init(t_infos *info)
 {
 	info->forks = ft_calloc(info->num_phil, sizeof(pthread_mutex_t*));
@@ -49,14 +66,15 @@ int	ft_init(t_infos *info)
 	}
 	if (pthread_mutex_init(&info->output, NULL) != 0)
 		return (0);
-	i = 0;
+	// i = 0;
 	ft_init_philos(info);
-	while (i < info->num_phil)
-	{
-		if (pthread_join(info->ph[i].th, NULL) != 0)
-			break;
-		i++;
-	}
+	ft_check_death(info);
+	// while (i < info->num_phil)
+	// {
+	// 	if (pthread_join(info->ph[i].th, NULL) != 0)
+	// 		break;
+	// 	i++;
+	// }
 	return (1);
 }
 

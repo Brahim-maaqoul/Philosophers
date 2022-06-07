@@ -26,6 +26,13 @@ int main(int ac, char **av)
 	if (!ft_init(&info))
 		return (0);
 	// int i = 0;
+	// while (i < info.num_phil)
+	// {
+	// 	pthread_mutex_destroy(&info.forks[i]);
+	// 	i++;
+	// }
+	// 	pthread_mutex_destroy(&info.output);
+	// int i = 0;
 	// while (i < info->num_phil)
 	// {
 	// 	pthread_join(info->ph[i].th, NULL);

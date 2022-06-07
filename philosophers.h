@@ -57,6 +57,7 @@ void	ft_thinking(t_infos *inf, int i);
 void	ft_eating(t_infos *inf, int i);
 void	ft_sleeping(t_infos *inf, int i);
 void	ft_grab_fork(t_infos *inf, int i);
-int	ft_dying(t_infos *inf, int i);
+int		ft_dying(t_infos *inf, int i);
+void	ft_check_death(t_infos *inf);
 
 #endif
