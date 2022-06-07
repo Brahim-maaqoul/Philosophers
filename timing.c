@@ -18,7 +18,7 @@ long long ft_gettime(void)
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
 	milliseconds =  tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	return (milliseconds);
+	return(milliseconds);
 }
 
 long long	ft_current_time(t_infos *inf, long i)

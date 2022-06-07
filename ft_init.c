@@ -34,21 +34,21 @@ void	*ft_init_philos(t_infos *info)
 	return (NULL);
 }
 
-void	ft_init(t_infos *info)
+int	ft_init(t_infos *info)
 {
 	info->forks = ft_calloc(info->num_phil, sizeof(pthread_mutex_t*));
 	if (!info->forks)
-		return ;
+		return (0);
 	int	i;
 
 	i = 0;
 	while (i < info->num_phil)
 	{
 		if (pthread_mutex_init(&info->forks[i++], NULL) != 0)
-			return ;
+			return (0);
 	}
 	if (pthread_mutex_init(&info->output, NULL) != 0)
-		return ;
+		return (0);
 	i = 0;
 	ft_init_philos(info);
 	while (i < info->num_phil)
@@ -57,7 +57,7 @@ void	ft_init(t_infos *info)
 			break;
 		i++;
 	}
-	// return (NULL);
+	return (1);
 }
 
 // int main(int ac, char **av)

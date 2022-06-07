@@ -32,7 +32,8 @@ void	*ft_routine(void *philo)
 			ft_eating(inf, i);
 			ft_sleeping(inf, i);
 			ft_thinking(inf, i);
-			ft_dying(inf, i);
+			if (ft_dying(inf, i))
+				return (NULL);
 			// printf("NYO-HO\n");
 			i++;
 			// if (i == inf->num_phil)

@@ -23,7 +23,8 @@ int main(int ac, char **av)
     info.time_eat = ft_atoi(av[3]);
     info.time_sleep = ft_atoi(av[4]);
 	// info.num_eat = ft_atoi(av[5]);
-	ft_init(&info);
+	if (!ft_init(&info))
+		return (0);
 	// int i = 0;
 	// while (i < info->num_phil)
 	// {

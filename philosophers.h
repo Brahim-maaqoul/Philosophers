@@ -51,12 +51,12 @@ long long	ft_current_time(t_infos *inf, long i);
 long long ft_gettime(void);
 void	mutex_print_str(t_infos *inf, char *str, int i);
 void	*ft_routine(void *philo);
-void	ft_init(t_infos *info);
+int		ft_init(t_infos *info);
 void	*ft_init_philos(t_infos *info);
 void	ft_thinking(t_infos *inf, int i);
 void	ft_eating(t_infos *inf, int i);
 void	ft_sleeping(t_infos *inf, int i);
 void	ft_grab_fork(t_infos *inf, int i);
-void	ft_dying(t_infos *inf, int i);
+int	ft_dying(t_infos *inf, int i);
 
 #endif

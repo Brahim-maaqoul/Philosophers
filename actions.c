@@ -42,7 +42,7 @@ void	ft_eating(t_infos *inf, int i)
 		// pthread_mutex_unlock(&inf->forks[i]);
 	pthread_mutex_unlock(&inf->forks[i]);
 	pthread_mutex_unlock(&inf->forks[i + 1]);
-	usleep(inf->time_eat);
+	usleep(inf->time_eat * 1000);
 }
 
 void	ft_sleeping(t_infos *inf, int i)
@@ -51,11 +51,13 @@ void	ft_sleeping(t_infos *inf, int i)
 	usleep(inf->time_sleep * 1000);
 }
 
-void	ft_dying(t_infos *inf, int i)
+int	ft_dying(t_infos *inf, int i)
 {
 	if (ft_gettime() - inf->ph[i].last_meal > inf->time_die)
 	{
 		mutex_print_str(inf, "died", i);
 		inf->is_finished = 1;
+		return (1);
 	}
+	return (0);
 }
