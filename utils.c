@@ -67,6 +67,6 @@ void	mutex_print_str(t_infos *inf, char *str, int i)
 {
 	pthread_mutex_lock(&inf->output);
 	if (!inf->is_finished)
-		printf("%lld\t%d %s\n",ft_gettime() - inf->created_at, inf->ph[i].id, str);
+		printf("%lld\t%d %s\n", ft_gettime() - inf->created_at, i, str);
 	pthread_mutex_unlock(&inf->output);
 }

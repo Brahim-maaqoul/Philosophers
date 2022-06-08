@@ -23,8 +23,9 @@
 typedef struct s_philo
 {
 	int     id;
-	long     last_meal;
+	long long    last_meal;
 	pthread_t   th;
+	struct  s_infos *info;
 }       t_philo;
 
 typedef struct  s_infos

@@ -22,13 +22,15 @@ void	*ft_init_philos(t_infos *info)
 	i = 0;
 	// pthread_detach(info->ph[i].th);
 	info->is_finished = 0;
+	info->created_at = ft_gettime();
 	while (i < info->num_phil)
 	{
-		info->ph[i].last_meal = 0;
-		info->ph[i].id = i + 1;
-		if (pthread_create(&info->ph[i].th, NULL, &ft_routine, info) != 0)
+		info->ph[i].id = i;
+		info->ph[i].info = info;
+		info->ph[i].last_meal = ft_gettime();
+		if (pthread_create(&info->ph[i].th, NULL, &ft_routine, &info->ph[i]) != 0)
 			return NULL;
-		usleep(100);
+		// usleep(100);
 		i++;
 	}
 	return (NULL);
@@ -53,16 +55,18 @@ void	ft_check_death(t_infos *inf)
 
 int	ft_init(t_infos *info)
 {
+	int	i;
+
 	info->forks = ft_calloc(info->num_phil, sizeof(pthread_mutex_t*));
 	if (!info->forks)
 		return (0);
-	int	i;
 
 	i = 0;
 	while (i < info->num_phil)
 	{
-		if (pthread_mutex_init(&info->forks[i++], NULL) != 0)
+		if (pthread_mutex_init(&info->forks[i], NULL) != 0)
 			return (0);
+		i++;
 	}
 	if (pthread_mutex_init(&info->output, NULL) != 0)
 		return (0);
