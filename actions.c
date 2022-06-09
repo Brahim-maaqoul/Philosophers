@@ -14,7 +14,7 @@
 
 void	ft_thinking(t_infos *inf, int i)
 {
-	mutex_print_str(inf, "is thinking", i + 1);
+	mutex_print_str(inf, "is thinking", i);
 }
 
 void	ft_grab_fork(t_infos *inf, int i)
@@ -24,20 +24,23 @@ void	ft_grab_fork(t_infos *inf, int i)
 
 void	ft_eating(t_infos *inf, int i)
 {
+	// pthread_mutex_lock(&inf->forks[i]);
 		if (i + 1 == inf->num_phil)
 		{
 			ft_grab_fork(inf, 0);
-			mutex_print_str(inf, "has taken a fork", i + 1);
+			// pthread_mutex_lock(&inf->forks[0]);
+			mutex_print_str(inf, "has taken a fork", i);
 		}
 		else
 		{
 			ft_grab_fork(inf, i + 1);
-			mutex_print_str(inf, "has taken a fork", i + 1);
+			// pthread_mutex_lock(&inf->forks[i + 1]);
+			mutex_print_str(inf, "has taken a fork", i);
 		}
-	mutex_print_str(inf, "has taken a fork", i + 1);
-	mutex_print_str(inf, "is eating", i + 1);
-	inf->ph[i].last_meal = ft_gettime();
+	mutex_print_str(inf, "has taken a fork", i);
+	mutex_print_str(inf, "is eating", i);
 	usleep(inf->time_eat * 1000);
+	inf->ph[i].last_meal = ft_gettime();
 	pthread_mutex_unlock(&inf->forks[i]);
 	if (i + 1 == inf->num_phil)
 		pthread_mutex_unlock(&inf->forks[0]);
@@ -47,7 +50,7 @@ void	ft_eating(t_infos *inf, int i)
 
 void	ft_sleeping(t_infos *inf, int i)
 {
-	mutex_print_str(inf, "is sleeping", i + 1);
+	mutex_print_str(inf, "is sleeping", i);
 	usleep(inf->time_sleep * 1000);
 }
 
@@ -55,8 +58,8 @@ int	ft_dying(t_infos *inf, int i)
 {
 	if (ft_gettime() - inf->ph[i].last_meal > inf->time_die)
 	{	
-		printf("%lld -- %lld -- %lld\n", ft_gettime(), inf->ph[i].last_meal, inf->ph[0].last_meal);
-		mutex_print_str(inf, "died", i + 1);
+		//printf("%lld -- %lld -- %lld\n", ft_gettime(), inf->ph[i].last_meal, inf->ph[0].last_meal);
+		mutex_print_str(inf, "died", i);
 		inf->is_finished = 1;
 		return (1);
 	}

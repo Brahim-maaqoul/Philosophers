@@ -30,9 +30,9 @@ void	*ft_init_philos(t_infos *info)
 		info->ph[i].last_meal = ft_gettime();
 		if (pthread_create(&info->ph[i].th, NULL, &ft_routine, &info->ph[i]) != 0)
 			return NULL;
-		// usleep(100);
 		i++;
 	}
+		usleep(500);
 	return (NULL);
 }
 
@@ -49,7 +49,7 @@ void	ft_check_death(t_infos *inf)
 				return ;
 			i++;
 		}
-		usleep(500);
+		// usleep(500);
 	}
 }
 
@@ -60,7 +60,6 @@ int	ft_init(t_infos *info)
 	info->forks = ft_calloc(info->num_phil, sizeof(pthread_mutex_t*));
 	if (!info->forks)
 		return (0);
-
 	i = 0;
 	while (i < info->num_phil)
 	{
