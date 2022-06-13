@@ -53,7 +53,7 @@ void	*ft_routine(void *philo)
 	philos = (t_philo *) philo;
 	i = philos->id;
 	if (i % 2 == 0)
-		usleep(100);
+		usleep(200);
 	while (!philos->info->is_finished)
 	{
 		ft_grab_fork(philos->info, i);

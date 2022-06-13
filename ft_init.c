@@ -57,7 +57,7 @@ int	ft_init(t_infos *info)
 {
 	int	i;
 
-	info->forks = ft_calloc(info->num_phil, sizeof(pthread_mutex_t*));
+	info->forks = ft_calloc(info->num_phil, sizeof(pthread_mutex_t));
 	if (!info->forks)
 		return (0);
 	i = 0;
