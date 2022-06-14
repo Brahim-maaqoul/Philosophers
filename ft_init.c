@@ -16,7 +16,7 @@ void	*ft_init_philos(t_infos *info)
 {
 	int	i;
 
-	info->ph = ft_calloc(info->num_phil, sizeof(t_philo*));
+	info->ph = ft_calloc(info->num_phil, sizeof(t_philo));
 	if (!info->ph)
 		return (NULL);
 	i = 0;
