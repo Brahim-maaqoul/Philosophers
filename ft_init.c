@@ -22,17 +22,19 @@ void	*ft_init_philos(t_infos *info)
 	i = 0;
 	// pthread_detach(info->ph[i].th);
 	info->is_finished = 0;
+	info->ate_cp = 0;
 	info->created_at = ft_gettime();
 	while (i < info->num_phil)
 	{
 		info->ph[i].id = i;
+		info->ph[i].num = 0;
 		info->ph[i].info = info;
 		info->ph[i].last_meal = ft_gettime();
 		if (pthread_create(&info->ph[i].th, NULL, &ft_routine, &info->ph[i]) != 0)
 			return NULL;
 		i++;
 	}
-		usleep(500);
+	// usleep(500);
 	return (NULL);
 }
 
@@ -45,6 +47,11 @@ void	ft_check_death(t_infos *inf)
 		i = 0;
 		while (i < inf->num_phil)
 		{
+			if (inf->ate_cp == inf->num_phil)
+			{
+				inf->is_finished = 1;
+				return ;
+			}
 			if (ft_dying(inf, i))
 				return ;
 			i++;

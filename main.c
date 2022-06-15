@@ -22,7 +22,7 @@ int main(int ac, char **av)
     info.time_die = ft_atoi(av[2]);
     info.time_eat = ft_atoi(av[3]);
     info.time_sleep = ft_atoi(av[4]);
-	// info.num_eat = ft_atoi(av[5]);
+	info.num_eat = ft_atoi(av[5]);
 	if (!ft_init(&info))
 		return (0);
 	// int i = 0;

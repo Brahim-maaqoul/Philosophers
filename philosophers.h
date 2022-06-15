@@ -23,6 +23,7 @@
 typedef struct s_philo
 {
 	int     id;
+	int		num;
 	long long    last_meal;
 	pthread_t   th;
 	struct  s_infos *info;
@@ -40,7 +41,7 @@ typedef struct  s_infos
 	pthread_mutex_t *forks;
 	pthread_mutex_t	output;
 	long long	created_at;
-	int	ate;
+	int			ate_cp;
 	int     b;
 }       t_infos;
 
