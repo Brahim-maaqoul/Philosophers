@@ -12,22 +12,53 @@
 
 #include "philosophers.h"
 
-int    ft_parsing(t_infos *info, int ac, char **av)
+int	ft_isdigit(char n)
+{
+	if (n >= 48 && n <= 57)
+		return (1);
+	return (0);
+}
+
+int    ft_parsing(char **av)
+{
+    int i;
+    int j;
+    
+    i = 1;
+    while (av[i])
+    {
+        j = 0;
+        while (av[i][j])
+        {
+            if (!ft_isdigit(av[i][j]))
+            {
+                printf("you need to enter a number !");
+                return (0);
+            }
+            j++;
+        }
+        i++;
+    }
+    return (1);
+}
+
+int take_args(t_infos *info, int ac, char **av)
 {
     if (ac == 5 || ac == 6)
     {
-        info->num_phil = ft_atoi(av[1]);
-        info->time_die = ft_atoi(av[2]);
-        info->time_eat = ft_atoi(av[3]);
-        info->time_sleep = ft_atoi(av[4]);
-        if (info->num_phil <= 0 || info->time_die <= 60 || info->time_eat <= 60
-            || info->time_sleep <= 60)
-            return (printf("you need to enter valid number!\n"));
+        if (info->num_phil <= 0 || info->time_die <= 0 || info->time_eat <= 0
+            || info->time_sleep <= 0)
+            {
+                printf("you need to enter valid number!\n");
+                return (0);
+            }
         if (ac == 6)
         {
-            info->num_eat = ft_atoi(av[5]);
             if (info->num_eat <= 0)
-                return (printf("you need to enter valid number!\n"));
+            {
+                printf("you need to enter valid number!\n");
+                return (0);
+            }
         }
     }
     else
@@ -35,5 +66,5 @@ int    ft_parsing(t_infos *info, int ac, char **av)
         printf("you need to enter valid arguments!\n");
         return (0);
     }
-    return (0);
+    return (1);
 }

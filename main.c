@@ -16,13 +16,16 @@ int main(int ac, char **av)
 {
 	t_infos	info;
 
-	// info = ft_calloc(5, sizeof(t_infos*));
-	// ft_parsing(&info, ac, av);
+	if (!ft_parsing(av))
+		return (0);
 	info.num_phil = ft_atoi(av[1]);
-    info.time_die = ft_atoi(av[2]);
-    info.time_eat = ft_atoi(av[3]);
-    info.time_sleep = ft_atoi(av[4]);
-	info.num_eat = ft_atoi(av[5]);
+	info.time_die = ft_atoi(av[2]);
+	info.time_eat = ft_atoi(av[3]);
+	info.time_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		info.num_eat = ft_atoi(av[5]);
+	if (!take_args(&info, ac, av))
+		return (0);
 	if (!ft_init(&info))
 		return (0);
 	// int i = 0;

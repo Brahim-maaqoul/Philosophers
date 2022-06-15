@@ -46,7 +46,9 @@ typedef struct  s_infos
 }       t_infos;
 
 int		ft_atoi(const char	*str);
-int    ft_parsing(t_infos *info, int ac, char **av);
+int		ft_isdigit(char n);
+int    ft_parsing(char **av);
+int take_args(t_infos *info, int ac, char **av);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 long long	ft_current_time(t_infos *inf, long i);

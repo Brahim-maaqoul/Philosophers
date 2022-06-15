@@ -57,8 +57,7 @@ void	ft_sleeping(t_infos *inf, int i)
 int	ft_dying(t_infos *inf, int i)
 {
 	if (ft_gettime() - inf->ph[i].last_meal > inf->time_die)
-	{	
-		//printf("%lld -- %lld -- %lld\n", ft_gettime(), inf->ph[i].last_meal, inf->ph[0].last_meal);
+	{
 		mutex_print_str(inf, "died", i);
 		inf->is_finished = 1;
 		return (1);
