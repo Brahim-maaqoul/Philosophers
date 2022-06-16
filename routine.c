@@ -14,18 +14,16 @@
 
 void	*ft_routine(void *philo)
 {
-	int	i;
+	int		i;
 	long	t;
-	t_philo *philos;
-	
+	t_philo	*philos;
+
 	philos = (t_philo *) philo;
 	i = philos->id;
 	if (i % 2 == 0)
 		usleep(100);
-	while (!philos->info->is_finished || philos->info->ate_cp != philos->info->num_eat)
+	while (!philos->info->is_finished)
 	{
-		// if (philos->info->ate_cp == philos->info->num_eat)
-			// return (NULL);
 		ft_grab_fork(philos->info, i);
 		ft_eating(philos->info, i);
 		ft_sleeping(philos->info, i);

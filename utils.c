@@ -67,8 +67,22 @@ void	mutex_print_str(t_infos *inf, char *str, int i)
 {
 	pthread_mutex_lock(&inf->output);
 	if (inf->is_finished)
-		return;
+		return ;
 	printf("%lld\t%d %s\n", ft_gettime() - inf->created_at, i + 1, str);
 	pthread_mutex_unlock(&inf->output);
+}
 
+void	ft_destroyer(t_infos *inf)
+{
+	int	i;
+
+	i = 0;
+	while (i < inf->num_phil)
+	{
+		pthread_mutex_destroy(&inf->forks[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&inf->output);
+	free(inf->forks);
+	free(inf->ph);
 }

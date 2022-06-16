@@ -12,33 +12,12 @@
 
 #include "philosophers.h"
 
-long long ft_gettime(void)
+long long	ft_gettime(void)
 {
-	long long milliseconds;
-	struct timeval tv;
+	long long		ms;
+	struct timeval	tv;
+
 	gettimeofday(&tv, NULL);
-	milliseconds =  tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	return(milliseconds);
+	ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	return (ms);
 }
-
-long long	ft_current_time(t_infos *inf, long i)
-{
-	return (ft_gettime() - i);
-}
-
-// int main(void)
-// {
-// 	t_philo *ph;
-// 	struct timeval tv;
-// 	// ph = malloc(sizeof(pthread_t));
-// 	// ph->created_at = ft_gettime();
-// 	// int l = 0;
-// 	// while (l < 5)
-// 	// {
-// 	// 	long long i = ft_current_time(ph);
-// 	// 	printf("%lld\n", i);
-// 	// 	usleep(200 * 1000);
-// 	// 	l++;
-// 	// }
-// 	printf("%lld\n", ft_gettime());
-// }

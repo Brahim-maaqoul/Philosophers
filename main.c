@@ -12,7 +12,7 @@
 
 #include "philosophers.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_infos	info;
 
@@ -28,22 +28,4 @@ int main(int ac, char **av)
 		return (0);
 	if (!ft_init(&info))
 		return (0);
-	// int i = 0;
-	// while (i < info.num_phil)
-	// {
-	// 	pthread_mutex_destroy(&info.forks[i]);
-	// 	i++;
-	// }
-	// 	pthread_mutex_destroy(&info.output);
-	// int i = 0;
-	// while (i < info->num_phil)
-	// {
-	// 	pthread_join(info->ph[i].th, NULL);
-	// 	i++;
-	// }
-	// i = 0;
-	// pthread_mutex_destroy(info->forks);
-	// while (i < info->num_phil)
-	// 	pthread_mutex_init(&info->forks[i++], NULL);
-	// pthread_mutex_destroy(&info->output);
 }

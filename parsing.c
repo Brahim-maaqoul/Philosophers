@@ -19,52 +19,52 @@ int	ft_isdigit(char n)
 	return (0);
 }
 
-int    ft_parsing(char **av)
+int	ft_parsing(char **av)
 {
-    int i;
-    int j;
-    
-    i = 1;
-    while (av[i])
-    {
-        j = 0;
-        while (av[i][j])
-        {
-            if (!ft_isdigit(av[i][j]))
-            {
-                printf("you need to enter a number !");
-                return (0);
-            }
-            j++;
-        }
-        i++;
-    }
-    return (1);
+	int	i;
+	int	j;
+
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (!ft_isdigit(av[i][j]))
+			{
+				printf("you need to enter a number !");
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
-int take_args(t_infos *info, int ac, char **av)
+int	take_args(t_infos *info, int ac, char **av)
 {
-    if (ac == 5 || ac == 6)
-    {
-        if (info->num_phil <= 0 || info->time_die <= 0 || info->time_eat <= 0
-            || info->time_sleep <= 0)
-            {
-                printf("you need to enter valid number!\n");
-                return (0);
-            }
-        if (ac == 6)
-        {
-            if (info->num_eat <= 0)
-            {
-                printf("you need to enter valid number!\n");
-                return (0);
-            }
-        }
-    }
-    else
-    {
-        printf("you need to enter valid arguments!\n");
-        return (0);
-    }
-    return (1);
+	if (ac == 5 || ac == 6)
+	{
+		if (info->num_phil <= 0 || info->time_die <= 0 || info->time_eat <= 0
+			|| info->time_sleep <= 0)
+		{
+			printf("you need to enter valid number!\n");
+			return (0);
+		}
+		if (ac == 6)
+		{
+			if (info->num_eat <= 0)
+			{
+				printf("you need to enter valid number!\n");
+				return (0);
+			}
+		}
+	}
+	else
+	{
+		printf("you need to enter valid arguments!\n");
+		return (0);
+	}
+	return (1);
 }
