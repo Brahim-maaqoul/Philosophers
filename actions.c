@@ -40,7 +40,7 @@ void	ft_eating(t_infos *inf, int i)
 	if (inf->ph[i].num == inf->num_eat)
 		inf->ate_cp++;
 	inf->ph[i].last_meal = ft_gettime();
-	usleep(inf->time_eat * 1000);
+	delay(inf->time_eat);
 	pthread_mutex_unlock(&inf->forks[i]);
 	if (i + 1 == inf->num_phil)
 		pthread_mutex_unlock(&inf->forks[0]);
@@ -51,7 +51,7 @@ void	ft_eating(t_infos *inf, int i)
 void	ft_sleeping(t_infos *inf, int i)
 {
 	mutex_print_str(inf, "is sleeping", i);
-	usleep(inf->time_sleep * 1000);
+	delay(inf->time_sleep);
 }
 
 int	ft_dying(t_infos *inf, int i)

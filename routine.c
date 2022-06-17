@@ -12,6 +12,15 @@
 
 #include "philosophers.h"
 
+void	delay(int t)
+{
+	long long	start;
+
+	start = ft_gettime();
+	while (ft_gettime() - start < t)
+		;
+}
+
 void	*ft_routine(void *philo)
 {
 	int		i;

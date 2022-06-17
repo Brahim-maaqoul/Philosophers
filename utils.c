@@ -65,9 +65,9 @@ void	*ft_calloc(size_t num, size_t size)
 
 void	mutex_print_str(t_infos *inf, char *str, int i)
 {
-	pthread_mutex_lock(&inf->output);
 	if (inf->is_finished)
 		return ;
+	pthread_mutex_lock(&inf->output);
 	printf("%lld\t%d %s\n", ft_gettime() - inf->created_at, i + 1, str);
 	pthread_mutex_unlock(&inf->output);
 }
