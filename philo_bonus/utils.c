@@ -65,8 +65,6 @@ void	*ft_calloc(size_t num, size_t size)
 
 void	print_str(t_infos *inf, char *str, int i)
 {
-	sem_unlink("output");
-	inf->output = sem_open("output", O_CREAT, 0, 1);
 	sem_wait(inf->output);
 	if (inf->is_finished)
 		return ;
