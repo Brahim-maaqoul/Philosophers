@@ -65,11 +65,9 @@ void	*ft_calloc(size_t num, size_t size)
 
 void	print_str(t_infos *inf, char *str, int i)
 {
-	sem_wait(inf->output);
 	if (inf->is_finished)
-		return ;
+		exit (1);
 	printf("%lld\t%d %s\n", ft_gettime() - inf->created_at, i + 1, str);
-	sem_post(inf->output);
 }
 
 void	ft_destroyer(t_infos *inf)
@@ -77,14 +75,14 @@ void	ft_destroyer(t_infos *inf)
 	// int	i;
 
 	// i = 0;
+	sem_unlink("forks");
+	sem_unlink("output");
 	sem_close(inf->output);
 	// while (i < inf->num_phil)
 	// {
 		sem_close(inf->forks);
-	sem_unlink("forks");
-	sem_unlink("output");
 	// 	i++;
 	// }
-	free(inf->forks);
+	free(inf->pid);
 	free(inf->ph);
 }

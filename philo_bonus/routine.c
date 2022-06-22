@@ -36,22 +36,38 @@ void	*ft_check_death(void *ph)
 			exit (0);
 		}
 		if (ft_dying(philo->info, i))
+		{
+			// ft_destroyer(philo->info);
+			sem_post(philo->info->stop);
 			exit (0);
+		}
 	}
 	return (NULL);
+}
+
+void *check_stop(void *ph)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)ph;
+	sem_wait(philo->info->stop);
+	sem_post(philo->info->stop);
+	exit(0);
 }
 
 void	ft_routine(t_philo *philo)
 {
 	int		i;
+	pthread_t th;
 
 	i = philo->id;
+	pthread_create(&philo->th, NULL,&ft_check_death, philo);
+	pthread_create(&th, NULL, &check_stop, philo);
 	if (i % 2 == 0)
 		usleep(100);
-	pthread_create(&philo->th, NULL,&ft_check_death, philo->info);
 	while (!philo->info->is_finished)
 	{
-		ft_grab_fork(philo->info, i);
+		ft_grab_fork(philo->info);
 		ft_eating(philo->info, i);
 		ft_sleeping(philo->info, i);
 		ft_thinking(philo->info, i);

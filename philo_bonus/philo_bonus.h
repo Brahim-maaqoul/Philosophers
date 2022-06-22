@@ -42,6 +42,7 @@ typedef struct s_infos
 	int				*pid;
 	sem_t			*forks;
 	sem_t			*output;
+	sem_t			*stop;
 	long long		created_at;
 	int				ate_cp;
 	int				b;
@@ -62,10 +63,11 @@ void		*ft_init_philos(t_infos *info);
 void		ft_thinking(t_infos *inf, int i);
 void		ft_eating(t_infos *inf, int i);
 void		ft_sleeping(t_infos *inf, int i);
-void		ft_grab_fork(t_infos *inf, int i);
+void		ft_grab_fork(t_infos *inf);
 int			ft_dying(t_infos *inf, int i);
 void		*ft_check_death(void *ph);
 void		ft_destroyer(t_infos *inf);
 void		delay(int t);
+void 		*check_stop(void *ph);
 
 #endif
