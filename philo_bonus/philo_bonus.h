@@ -64,7 +64,7 @@ void		ft_eating(t_infos *inf, int i);
 void		ft_sleeping(t_infos *inf, int i);
 void		ft_grab_fork(t_infos *inf, int i);
 int			ft_dying(t_infos *inf, int i);
-void		*ft_check_death(void *info);
+void		*ft_check_death(void *ph);
 void		ft_destroyer(t_infos *inf);
 void		delay(int t);
 

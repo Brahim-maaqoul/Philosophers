@@ -21,6 +21,26 @@ void	delay(int t)
 		;
 }
 
+void	*ft_check_death(void *ph)
+{
+	int		i;
+	t_philo	*philo;
+
+	philo = (t_philo *)ph;
+	i = philo->id;
+	while (1)
+	{
+		if (philo->info->ate_cp == philo->info->num_phil)
+		{
+			philo->info->is_finished = 1;
+			exit (0);
+		}
+		if (ft_dying(philo->info, i))
+			exit (0);
+	}
+	return (NULL);
+}
+
 void	ft_routine(t_philo *philo)
 {
 	int		i;
@@ -28,6 +48,7 @@ void	ft_routine(t_philo *philo)
 	i = philo->id;
 	if (i % 2 == 0)
 		usleep(100);
+	pthread_create(&philo->th, NULL,&ft_check_death, philo->info);
 	while (!philo->info->is_finished)
 	{
 		ft_grab_fork(philo->info, i);
