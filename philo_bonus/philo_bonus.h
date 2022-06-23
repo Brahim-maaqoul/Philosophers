@@ -67,7 +67,8 @@ void		ft_grab_fork(t_infos *inf);
 int			ft_dying(t_infos *inf, int i);
 void		*ft_check_death(void *ph);
 void		ft_destroyer(t_infos *inf);
-void		delay(int t);
-void 		*check_stop(void *ph);
+void		ft_init_sem(t_infos *info);
+void		ft_waitpids(t_infos *info);
+void		*check_stop(void *ph);
 
 #endif

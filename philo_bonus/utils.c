@@ -72,17 +72,10 @@ void	print_str(t_infos *inf, char *str, int i)
 
 void	ft_destroyer(t_infos *inf)
 {
-	// int	i;
-
-	// i = 0;
 	sem_unlink("forks");
 	sem_unlink("output");
 	sem_close(inf->output);
-	// while (i < inf->num_phil)
-	// {
-		sem_close(inf->forks);
-	// 	i++;
-	// }
+	sem_close(inf->forks);
 	free(inf->pid);
 	free(inf->ph);
 }

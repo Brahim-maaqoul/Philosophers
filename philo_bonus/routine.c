@@ -12,15 +12,6 @@
 
 #include "philo_bonus.h"
 
-void	delay(int t)
-{
-	long long	start;
-
-	start = ft_gettime();
-	while (ft_gettime() - start < t)
-		;
-}
-
 void	*ft_check_death(void *ph)
 {
 	int		i;
@@ -37,7 +28,6 @@ void	*ft_check_death(void *ph)
 		}
 		if (ft_dying(philo->info, i))
 		{
-			// ft_destroyer(philo->info);
 			sem_post(philo->info->stop);
 			exit (0);
 		}
@@ -45,7 +35,7 @@ void	*ft_check_death(void *ph)
 	return (NULL);
 }
 
-void *check_stop(void *ph)
+void	*check_stop(void *ph)
 {
 	t_philo	*philo;
 
@@ -57,13 +47,13 @@ void *check_stop(void *ph)
 
 void	ft_routine(t_philo *philo)
 {
-	int		i;
-	pthread_t th;
+	int			i;
+	pthread_t	th;
 
 	i = philo->id;
-	pthread_create(&philo->th, NULL,&ft_check_death, philo);
+	pthread_create(&philo->th, NULL, &ft_check_death, philo);
 	pthread_create(&th, NULL, &check_stop, philo);
-	if (i % 2 == 0)
+	if (i % 2)
 		usleep(100);
 	while (!philo->info->is_finished)
 	{

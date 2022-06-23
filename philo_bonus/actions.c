@@ -38,7 +38,7 @@ void	ft_eating(t_infos *inf, int i)
 	print_str(inf, "is eating", i);
 	inf->ph[i].num++;
 	inf->ph[i].last_meal = ft_gettime();
-	delay(inf->time_eat);
+	usleep(1000 * inf->time_eat);
 	sem_post(inf->forks);
 	if (i + 1 == inf->num_phil)
 		sem_post(inf->forks);
@@ -51,7 +51,7 @@ void	ft_eating(t_infos *inf, int i)
 void	ft_sleeping(t_infos *inf, int i)
 {
 	print_str(inf, "is sleeping", i);
-	delay(inf->time_sleep);
+	usleep(1000 * inf->time_sleep);
 }
 
 int	ft_dying(t_infos *inf, int i)

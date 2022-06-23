@@ -29,10 +29,31 @@ void	*ft_init_philos(t_infos *info)
 		info->ph[i].num = 0;
 		info->ph[i].info = info;
 		info->ph[i].last_meal = ft_gettime();
-		// info->pid[i] = fork();
 		i++;
 	}
 	return (NULL);
+}
+
+void	ft_init_sem(t_infos *info)
+{
+	sem_unlink("forks");
+	sem_unlink("output");
+	sem_unlink("stop");
+	info->forks = sem_open("forks", O_CREAT, 0, info->num_phil);
+	info->output = sem_open("output", O_CREAT, 0, 1);
+	info->stop = sem_open("stop", O_CREAT, 0, 0);
+}
+
+void	ft_waitpids(t_infos *info)
+{
+	int	i;
+
+	i = 0;
+	while (i < info->num_phil)
+	{
+		waitpid(info->pid[i], NULL, 0);
+		i++;
+	}
 }
 
 int	ft_init(t_infos *info)
@@ -40,12 +61,7 @@ int	ft_init(t_infos *info)
 	int	i;
 
 	i = 0;
-	sem_unlink("forks");
-	sem_unlink("output");
-	sem_unlink("stop");
-	info->forks = sem_open("forks", O_CREAT, 0, info->num_phil);
-	info->output = sem_open("output", O_CREAT, 0, 1);
-	info->stop = sem_open("stop", O_CREAT, 0, 0);
+	ft_init_sem(info);
 	ft_init_philos(info);
 	info->pid = ft_calloc(info->num_phil, sizeof(pid_t));
 	if (!info->pid)
@@ -57,24 +73,12 @@ int	ft_init(t_infos *info)
 			exit (1);
 		else if (info->pid[i] == 0)
 		{
-			// pthread_create(&info->ph[i].th, NULL,&ft_check_death, info->ph);
 			ft_routine(&info->ph[i]);
 			exit(0);
 		}
-
-		// else
-		// 	waitpid(-1, NULL, 0);
-			
 		i++;
 	}
-	i = 0;
-	while (i < info->num_phil)
-	{
-		waitpid(info->pid[i], NULL, 0);
-		i++;
-	}
-	// while(1);
-	// ft_check_death(info);
+	ft_waitpids(info);
 	ft_destroyer(info);
 	return (1);
 }
