@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:19:43 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/06 15:39:35 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/26 21:53:52 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_infos
 	sem_t			*output;
 	sem_t			*stop;
 	long long		created_at;
-	int				ate_cp;
 	int				b;
 }		t_infos;
 

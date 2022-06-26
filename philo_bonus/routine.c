@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:28:00 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/06 15:06:02 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/26 21:54:22 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ void	*ft_check_death(void *ph)
 	i = philo->id;
 	while (1)
 	{
-		if (philo->info->ate_cp == philo->info->num_phil)
-		{
-			philo->info->is_finished = 1;
-			exit (0);
-		}
 		if (ft_dying(philo->info, i))
 		{
 			sem_post(philo->info->stop);

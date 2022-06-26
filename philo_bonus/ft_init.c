@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:22:19 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/06 15:18:10 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/26 21:54:26 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*ft_init_philos(t_infos *info)
 		return (NULL);
 	i = 0;
 	info->is_finished = 0;
-	info->ate_cp = 0;
 	info->created_at = ft_gettime();
 	while (i < info->num_phil)
 	{
