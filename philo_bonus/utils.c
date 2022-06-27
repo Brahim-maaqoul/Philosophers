@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:57:34 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/06 15:39:30 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:32:37 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	*ft_calloc(size_t num, size_t size)
 void	print_str(t_infos *inf, char *str, int i)
 {
 	if (inf->is_finished)
-		exit (1);
+		exit (0);
 	printf("%lld\t%d %s\n", ft_gettime() - inf->created_at, i + 1, str);
 }
 
@@ -74,8 +74,10 @@ void	ft_destroyer(t_infos *inf)
 {
 	sem_unlink("forks");
 	sem_unlink("output");
+	sem_unlink("stop");
 	sem_close(inf->output);
 	sem_close(inf->forks);
+	sem_close(inf->stop);
 	free(inf->pid);
 	free(inf->ph);
 }
