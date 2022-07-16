@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:28:00 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/06/06 15:06:02 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/07/16 15:10:34 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	delay(int t)
 
 	start = ft_gettime();
 	while (ft_gettime() - start < t)
-		;
+		usleep (500);
 }
 
 void	*ft_routine(void *philo)
