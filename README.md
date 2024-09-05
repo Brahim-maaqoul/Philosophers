@@ -2,7 +2,7 @@ Philosophers Project
 
 Overview
 
-This project is an implementation of the "Dining Philosophers" problem, a classic problem in computer science and concurrent programming. The problem describes a scenario where n philosophers are seated around a circular table with n chopsticks in the center, and each philosopher has to eat from a bowl of rice. The problem is to ensure that no philosopher is starving and that no deadlocks or livelocks occur.
+This project is an implementation of the "Dining Philosophers" problem, a classic problem in computer science and concurrent programming. The problem describes a scenario where n philosophers are seated around a circular table with n-1 chopsticks in the center, and each philosopher has to eat from a bowl of rice. The problem is to ensure that no philosopher is starving and that no deadlocks or livelocks occur.
 
 Project Requirements
 
